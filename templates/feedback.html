@@ -1,0 +1,105 @@
+
+
+<html>
+<head>
+    <title> Feedback Form </title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+        b{
+            font-family: "Bookman Old Style";
+            font-size: 30px;
+
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-offset-4 col-md-4">
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <center>
+        <input type="submit" value="submit"  class="btn btn-success">
+        <input type="submit" value="submit"  class="btn btn-danger">
+    </center>
+</form>
+
+
+</div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        {% if fbs %}
+
+            {% for c in fbs  reversed%}
+
+                {% if c.rating >= 4 %}
+                Name : {{ c.name }}<br><br>
+                Rating : {{ c.rating }}<br><br>
+                Date : {{ c.datetime }}<br><br>
+                Feedback : {{ c.feedback }}<br><br>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <center><h1>Feedbacks are not available</h1></center>
+        {%endif  %}
+
+
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
